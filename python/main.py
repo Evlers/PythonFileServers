@@ -1,6 +1,7 @@
 from flask import Flask,render_template,redirect,url_for
 from flask import request,abort,send_from_directory
 from werkzeug.utils import secure_filename
+from gevent import pywsgi
 import os
 
 app = Flask(__name__)
@@ -39,4 +40,6 @@ def upload():
 
 if __name__ == '__main__':
 	#app.debug = True # 设置调试模式，生产模式的时候要关掉debug
-	app.run(host='0.0.0.0', port = 6443,)
+	#app.run(host='0.0.0.0', port = 6443,)
+    server = pywsgi.WSGIServer(('0.0.0.0', 6443), app)#使用WSGI创建服务（适用于生产环境）
+    server.serve_forever()
