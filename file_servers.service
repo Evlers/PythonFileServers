@@ -4,8 +4,7 @@ After=network.target
 
 [Service]
 Type=forking
-Environment=HOME=/home/evlers/PythonFileServers
-ExecStart=/home/evlers/PythonFileServers/run.sh
+ExecStart=/usr/local/share/PythonFileServers/run.sh
 ExecStop=/bin/kill $MAINPID
 PrivateTmp=true
 Restart=on-failure
