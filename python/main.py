@@ -23,9 +23,9 @@ def body():
     return request.data
 
 #文件下载
-@app.route('/file/<filename>', methods = ['GET'])
+@app.route('/file/<path:filename>', methods = ['GET'])
 def file(filename):
-	return send_from_directory('../file/', filename, as_attachment = True)
+	return send_from_directory('../file', filename, as_attachment = True)
 
 #文件上传
 @app.route('/upload', methods=['POST', 'GET'])
